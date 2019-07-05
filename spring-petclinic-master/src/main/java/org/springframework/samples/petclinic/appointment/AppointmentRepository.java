@@ -14,10 +14,15 @@ public interface AppointmentRepository extends Repository<Appointment, Integer> 
 (select * from appointment where id_specialtie=3) as appointment
 inner join specialties on appointment.id_specialtie=specialties.id;
      */
-
+    //Model de citas de usuarios
     @Query("SELECT appointment FROM Appointment appointment")
     @Transactional(readOnly = true)
     Collection<Appointment> getAppointments();
+    
+    @Query("SELECT appointment FROM Appointment appointment "
+            + "WHERE appointment.owner_id=:id")
+    @Transactional(readOnly = true)
+    Collection<Appointment> getAppointmentsByOwner(@Param("id") Integer id);
 
     @Query("SELECT appointment FROM Appointment appointment "
             + "WHERE appointment.especialidad=:id")
@@ -40,4 +45,6 @@ inner join specialties on appointment.id_specialtie=specialties.id;
     int updateUserSetStatusForNameNative(String confirmacion, Integer id);
     
     void delete(Appointment appoinment);
+
+    public Collection<Appointment> getAppointmentsByOwner(int i);
 }
