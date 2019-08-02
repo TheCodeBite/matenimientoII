@@ -13,10 +13,11 @@
             th {
                 background-color:  #284E77 !important;
                 color: white;
+                width: 100px;
             } 
             
             .btn{
-                width: 300px;
+                width: 100px;
                 height: 30px;
                 outline: none !important;
                 border: none;
@@ -31,10 +32,10 @@
         
         <div style="display:flex"><h1 style="width:100%; text-align: center; margin-top: 20px" th:text="#{Productos}"></h1></div>
        
-        <a style="margin-left:10%; margin-top:20px;" th:text="#{agregarProducto}" class="btn" th:href="@{/product/create-product}"></a>
+        <a style="margin-left:10%; margin-top:20px; width: 200px;" th:text="#{agregarProducto}" class="btn" th:href="@{/product/create-product}"></a>
 
         <div style="width: 100%;display: flex">
-        <table style="margin:auto; width:80%" id="vets" class="table table-striped">
+             <table style="margin:auto; width:80%" id="vets" class="table table-striped">
             <thead>
                 <tr>
                     <th th:text="#{Producto}" ></th>
@@ -50,7 +51,7 @@
                     <td th:text="${product.description}"/>
                     <td><p style="float: left;">$</p><p th:text=" ${product.price}"/></td>
                     <td th:text="${product.existence}"/>
-                    <td> <img th:src="@{${product.photo}}" style ="width: 100px; height: 100px;"> </td>
+                    <td> <img th:src="@{${product.photo}}" style ="width: 50px; height: 100px;"> </td>
                     <td> <a th:text="#{editar}" th:href="@{/product/edit/__${product.id}__}" class="btn btn-default"></a> </td>
                     <td> <a th:text="#{Eliminar}" th:href="@{/product/delete/__${product.id}__}" class="btn btn-default"></a> </td>
                 </tr>
